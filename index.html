@@ -24,5 +24,19 @@
         <input type="submit" value="Buscar!">
     </form>
 
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <button type="button" onclick="imprimeDia()">Que dia é hoje?</button>
+    <p id="dia"></p>
+
+    <script>
+        function imprimeDia(){
+            document.getElementById("dia").innerHTML = Date();
+        }
+    </script>
 </body>
 </html>

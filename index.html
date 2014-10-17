@@ -5,38 +5,38 @@
     <title>Front-end web em 30 minutos</title>
 </head>
 <body>
-    <h1>Front end é tranquilo.</h1>
+<h1>Front end é tranquilo.</h1>
 
-    <h2>E bacana</h2>
-    Dá pra aprender rapidinho.
+<h2>E bacana</h2>
+Dá pra aprender rapidinho.
 
-    <ul>
-        <li>Um item.</li>
-        <li>Outro item.</li>
-    </ul>
+<ul>
+    <li>Um item.</li>
+    <li>Outro item.</li>
+</ul>
 
-    <a href="http://www.w3schools.com">O W3Schools é um ótimo recurso pra consultar.</a>
+<a href="http://www.w3schools.com">O W3Schools é um ótimo recurso pra consultar.</a>
 
-    <br>
-    <br>
-    <form method=”get” action=”outrapagina.html”>
-        <input type="text" value="" name="q">
-        <input type="submit" value="Buscar!">
-    </form>
+<br>
+<br>
+
+<form method=”get” action=”outrapagina.html”>
+    <input type="text" value="" name="q">
+    <input type="submit" value="Buscar!">
+</form>
 
 
+<br>
+<br>
+<br>
+<br>
+<button type="button" onclick="imprimeDia()">Que dia é hoje?</button>
+<p id="dia"></p>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <button type="button" onclick="imprimeDia()">Que dia é hoje?</button>
-    <p id="dia"></p>
-
-    <script>
-        function imprimeDia(){
-            document.getElementById("dia").innerHTML = Date();
-        }
-    </script>
+<script>
+    function imprimeDia() {
+        document.getElementById("dia").innerHTML = Date();
+    }
+</script>
 </body>
 </html>

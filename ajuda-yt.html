@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Uma certa ajuda online.</title>
+</head>
+<body>
+<h1>As vezes os outros sabem das coisas</h1>
+
+<div id="buttons">
+    <label>
+        <input id="query" value='gatos' type="text"/>
+        <button id="search-button" onclick="search()">buscar</button>
+    </label>
+</div>
+
+<div>
+    <ul id="search-container"></ul>
+</div>
+
+</body>
+
+<script>
+    API_KEY="AIzaSyCohDku9TlM_vMZUB8tXfpzSM-icXkU6n4";
+
+    function search() {
+        var busca = $('#query').val();
+
+        var requestParams = {
+            part : 'snippet',
+            maxResults : 10,
+            key : API_KEY,
+            q : busca
+        };
+
+        var urlFinal = "https://content.googleapis.com/youtube/v3/search?" + $.param(requestParams);
+
+        $.ajax({
+            url: urlFinal,
+            success: function(response) {
+                var str = JSON.stringify(response.items);
+
+                $.each(response.items, function(i, item){
+                    var titulo = item.snippet.title;
+                    var vId = item.id.videoId;
+                    $('#search-container').append($(document.createElement('li')).html("<a href=\"https://www.youtube.com/watch?v=" + vId + "\">" + titulo + "</a>"));
+                });
+            },
+            error : function(message) {
+                console.log(message)
+            }
+        });
+
+    }
+
+    function search2() {
+        var q = $('#query').val();
+        var request = gapi.client.youtube.search.list({
+            q: q,
+            part: "snippet",
+            key : API_KEY
+        });
+
+        request.execute(function(response) {
+            var str = JSON.stringify(response.result);
+            $('#search-container').html('<pre>' + str + '</pre>');
+        });
+    }
+
+    function loadAPIClientInterfaces() {
+        gapi.client.load('youtube', 'v3', function() {
+        });
+    }
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=loadAPIClientInterfaces"></script>
+
+</html>
